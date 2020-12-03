@@ -1,13 +1,13 @@
-package com.sbzl.framework.core;
+package com.sbzl.framework.learn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CoreApplication {
+public class LearnApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CoreApplication.class, args);
+        SpringApplication.run(LearnApplication.class, args);
     }
 
 }

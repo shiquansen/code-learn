@@ -8,10 +8,10 @@
         <version>2.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <groupId>com.sbzl.framework</groupId>
+    <artifactId>learn</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <name>learn</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

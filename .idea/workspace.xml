@@ -33,6 +33,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -40,10 +41,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin/src/main/resources/mapper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/src/main/java/com/sbzl/framework/core/utils" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sbzl.framework.core.utils" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.sbzl.framework.admin" />
       <recent name="com.sbzl.framework.admin.web" />
@@ -52,16 +56,17 @@
       <recent name="com.sbzl.framework.admin.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\eebbk\framework\core\src\main\java\com\sbzl\framework\core\utils" />
       <recent name="G:\eebbk\framework\admin\src\main\java\com\sbzl\framework\admin" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="FieldUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sbzl.framework.admin.util.FieldUtils" />
-      <module name="admin" />
+  <component name="RunManager" selected="Application.HttpGetUtil">
+    <configuration name="AESUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sbzl.framework.core.utils.encrypt.symmetrical.AESUtil" />
+      <module name="core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sbzl.framework.admin.util.*" />
+          <option name="PATTERN" value="com.sbzl.framework.core.utils.encrypt.symmetrical.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -69,12 +74,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sbzl.framework.core.Main" />
+    <configuration name="HttpGetUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sbzl.framework.core.utils.http.HttpGetUtil" />
       <module name="core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sbzl.framework.core.*" />
+          <option name="PATTERN" value="com.sbzl.framework.core.utils.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MACUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sbzl.framework.core.utils.encrypt.hash.MACUtil" />
+      <module name="core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sbzl.framework.core.utils.encrypt.hash.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RSAUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sbzl.framework.core.utils.encrypt.asymmetric.RSAUtil" />
+      <module name="core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sbzl.framework.core.utils.encrypt.asymmetric.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SHAUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sbzl.framework.core.utils.encrypt.hash.SHAUtil" />
+      <module name="core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sbzl.framework.core.utils.encrypt.hash.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,46 +137,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="admin" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sbzl.framework.admin.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.sbzl.framework.admin" />
-      <option name="MAIN_CLASS_NAME" value="com.sbzl.framework.admin.AdminApplicationTests" />
-      <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserManagerTest.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="admin" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sbzl.framework.admin.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.sbzl.framework.admin.user" />
-      <option name="MAIN_CLASS_NAME" value="com.sbzl.framework.admin.user.UserManagerTest" />
-      <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="admin" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sbzl.framework.admin.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.sbzl.framework.admin.AdminApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,21 +151,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LearnApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="learn" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sbzl.framework.learn.LearnApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.FieldUtils" />
-      <item itemvalue="JUnit.UserManagerTest.contextLoads" />
       <item itemvalue="Spring Boot.CoreApplication" />
+      <item itemvalue="Spring Boot.LearnApplication" />
+      <item itemvalue="Application.SHAUtil" />
+      <item itemvalue="Application.MACUtil" />
+      <item itemvalue="Application.AESUtil" />
+      <item itemvalue="Application.RSAUtil" />
+      <item itemvalue="Application.HttpGetUtil" />
       <item itemvalue="Spring Boot.AdminApplication" />
-      <item itemvalue="JUnit.AdminApplicationTests.contextLoads" />
-      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Spring Boot.AdminApplication" />
-        <item itemvalue="JUnit.AdminApplicationTests.contextLoads" />
-        <item itemvalue="JUnit.UserManagerTest.contextLoads" />
-        <item itemvalue="Application.FieldUtils" />
+        <item itemvalue="Application.HttpGetUtil" />
+        <item itemvalue="Application.RSAUtil" />
+        <item itemvalue="Application.AESUtil" />
+        <item itemvalue="Application.MACUtil" />
+        <item itemvalue="Application.SHAUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -173,7 +188,7 @@
       <updated>1606438235094</updated>
       <workItem from="1606438239028" duration="20128000" />
       <workItem from="1606695463052" duration="11000" />
-      <workItem from="1606695525252" duration="20909000" />
+      <workItem from="1606695525252" duration="59504000" />
     </task>
     <servers />
   </component>
@@ -185,10 +200,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="710" y="49" key="#Auto_Import/0.0.1920.1040@0.0.1920.1040" timestamp="1606448217959" />
-    <state x="389" y="197" width="1092" height="815" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606450418276">
+    <state x="389" y="197" width="1092" height="815" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606960888515">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="389" y="197" width="1092" height="815" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606450418276" />
+    <state x="389" y="197" width="1092" height="815" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606960888515" />
+    <state x="692" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606979731142">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="692" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606979731142" />
     <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1606707622575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -217,38 +236,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606706340123" />
-    <state width="1877" height="521" key="GridCell.Tab.0.bottom" timestamp="1606814409123">
+    <state width="1877" height="222" key="GridCell.Tab.0.bottom" timestamp="1606979742335">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="521" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606814409123" />
-    <state width="1877" height="521" key="GridCell.Tab.0.center" timestamp="1606814409123">
+    <state width="1877" height="222" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606979742335" />
+    <state width="1877" height="222" key="GridCell.Tab.0.center" timestamp="1606979742334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="521" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606814409123" />
-    <state width="1877" height="521" key="GridCell.Tab.0.left" timestamp="1606814409123">
+    <state width="1877" height="222" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606979742334" />
+    <state width="1877" height="222" key="GridCell.Tab.0.left" timestamp="1606979742334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="521" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606814409123" />
-    <state width="1877" height="521" key="GridCell.Tab.0.right" timestamp="1606814409123">
+    <state width="1877" height="222" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606979742334" />
+    <state width="1877" height="222" key="GridCell.Tab.0.right" timestamp="1606979742335">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="521" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606814409123" />
-    <state width="1877" height="521" key="GridCell.Tab.1.bottom" timestamp="1606728220992">
+    <state width="1877" height="222" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606979742335" />
+    <state width="1877" height="338" key="GridCell.Tab.1.bottom" timestamp="1606964690786">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="521" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606728220992" />
-    <state width="1877" height="521" key="GridCell.Tab.1.center" timestamp="1606728220991">
+    <state width="1877" height="338" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606964690786" />
+    <state width="1877" height="338" key="GridCell.Tab.1.center" timestamp="1606964690786">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="521" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606728220991" />
-    <state width="1877" height="521" key="GridCell.Tab.1.left" timestamp="1606728220991">
+    <state width="1877" height="338" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606964690786" />
+    <state width="1877" height="338" key="GridCell.Tab.1.left" timestamp="1606964690786">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="521" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606728220991" />
-    <state width="1877" height="521" key="GridCell.Tab.1.right" timestamp="1606728220991">
+    <state width="1877" height="338" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606964690786" />
+    <state width="1877" height="338" key="GridCell.Tab.1.right" timestamp="1606964690786">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="521" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606728220991" />
+    <state width="1877" height="338" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606964690786" />
     <state x="531" y="335" key="Registry" timestamp="1606444753067">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -257,10 +276,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606705726085" />
-    <state x="561" y="200" key="new project wizard" timestamp="1606446616660">
+    <state x="662" y="252" width="596" height="536" key="find.popup" timestamp="1606988172825">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="561" y="200" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1606446616660" />
+    <state x="662" y="252" width="596" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606988172825" />
+    <state x="561" y="200" key="new project wizard" timestamp="1606883948401">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="561" y="200" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1606883948401" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1606895566010">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606895566010" />
     <state x="623" y="225" key="search.everywhere.popup" timestamp="1606444717418">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
