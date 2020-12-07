@@ -1,0 +1,61 @@
+首要记得markdown支持html语法的，也就是说支持css属性的。
+
+注释： <!--哈哈我是注释，不会在浏览器中显示。-->
+标题： #一级标题 ##二级标题  一直到6级
+小黑点： - 小黑点
+步骤： 1. 步骤1
+标记： `标记`
+换行： 空两格+enter  <br/>
+分割线： <hr/>
+
+转义字符、字体、字号、颜色：
+    转义字符：/
+    字体、字号、颜色:   <font color=#0099ff size=12 face="黑体">黑体</font>
+
+块语法讲解:
+    目录： [TOC]
+    代码块: `````` TAB
+    表格:    |学号|姓名|序号|
+            |-|-|-|
+            |小明明|男|5|
+            |小红|女|79|
+            |小陆|男|192|
+
+
+插入图像：   <center>
+                ![GitHub set up](http://zh.mweb.im/asset/img/set-up-git.gif "图片Title")
+                格式: ![图片Alt](图片地址 "图片Title")
+            </center>
+
+首行缩进：【1】 &emsp;或&#8195; //全角
+        【2】 &ensp;或&#8194; //半角
+        【3】 &nbsp;或&#160;  //半角之半角
+
+对齐方式： <center>行中心对齐</center>
+         <p align="left">行左对齐</p>
+         <p align="right">行右对齐</p>
+
+斜体、粗体、删除线、下划线、背景高亮：  *斜体*或_斜体_
+                                 **粗体**
+                                 ***加粗斜体***
+                                 ~~删除线~~
+                                 ++下划线++
+                                 ==背景高亮==
+超链接、页内链接、自动链接、注脚：
+    行内式： [择势勤](https://www.jianshu.com/u/16d77399d3a7 "择势勤")
+    参考式： 我经常去的几个网站[Google][1]、[Leanote][2]。
+                [1]:http://www.google.com
+                [2]:http://www.leanote.com
+    注脚： 使用 Markdown[^1]可以效率的书写文档, 直接转换成 HTML[^2]。
+                [^1]:Markdown是一种纯文本标记语言
+                [^2]:HyperText Markup Language 超文本标记语言
+    锚点（页内超链接）：  ## 0. 目录{#index}
+    自动链接： &lt;http://example.com/&gt; &emsp;&emsp;
+             &lt;address@example.com&gt;
+
+多级引用：
+    >>> 请问 Markdwon 怎么用？ - 小白
+    >> 自己看教程！ - 愤青
+    > 教程在哪？ - 小白
+
+

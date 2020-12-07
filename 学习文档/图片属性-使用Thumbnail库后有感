@@ -1,0 +1,25 @@
+1. net.coobird.thumbnailator.makers;
+    - FixedSizeThumbnailMaker
+        - size （width, weight） 定宽高
+        - keepAspectRatio       按比例（按长宽较短的一边算）
+
+    -ScaledThumbnailMaker
+        - Scaled（比率）
+            - widthFactor;
+            - heightFactor;
+
+
+   这个库其实就是根据size去做裁剪、旋转、大小缩放等操作。
+
+   1 像素数目
+   2 图像分辨率
+   3 图像大小
+   4 图像颜色
+   5 图像深度
+   6 色调
+   7 饱和度
+   8 色相
+   9 亮度
+   10 对比度
+   11 色彩通道
+   12 图像层次

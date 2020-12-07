@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    status属性：查看log4j的装配过程，值为OFF表示关闭，值为debug等日志级别为查看日志过程
+-->
+<configuration status="OFF">
+
+    <!--全局属性声明，方便后面使用${属性名称} 进行引用-->
+    <properties>
+        <!-- /代表的是盘符根目录， 还有诸如 .代表当前当前项目路径 ，我们可以使用@ 名称@从pom.xml中动态获取这些值 -->
+        <property name="LOG_HOME">log</property>
+        <property name="DEBUG_FILE_NAME">debug</property>
+        <property name="ERROR_FILE_NAME">error</property>
+    </properties>
+
+    <!--定义附加器，需要在appender标签中定义-->
+    <Appenders>
+        <!--
+            name属性：定义追加器的标识名称
+            target:定义输出日志形式    SYSTEM_OUT/SYSTEM_ERR
+        -->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[online_point_read] %C:%L  %m%n"/>
+        </Console>
+
+        <!--
+       File : 文件追加器
+       append ：决定新产生的日志是追加还是覆盖（true为追加（默认））
+       FileName : 决定日志文件的名称和位置
+   -->
+        <File name="file" FileName="${LOG_HOME}/file.log" append="true">
+            <ThresholdFilter level="error" onmatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[online_point_read] %-d{yyyy-MM-dd HH-mm-ss.SSS} [%-5p] %c:%L %m%n"/>
+        </File>
+
+        <!--
+            以天/月/日/时为单位打印日志
+            filePattern指定封存日志文件的格式
+        -->
+        <RollingFile name="rollingFile" fileName="${LOG_HOME}/rollfile.log"
+                     filePattern="${LOG_HOME}/$${date:yyyy-MM}/roll_file-%d{yyyy-MM-dd}.log">
+            <!--
+                间隔时间备份策略
+                modulate为true表示以0点为边界进行时间偏移计算，
+                例：每隔4个小时进行日志封存，当前时间为3点，那么1个小时后进行一次日志封存(将之前的日志放置到filePattern指定的封存位置)
+                interval：间隔时间(其单位有filePattern中-dd HH%d{yyyy-MM}的最小单位来决定，)
+            -->
+            <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            <PatternLayout pattern="[online_point_read] %-d{yyyy-MM-dd HH-mm-ss.SSS} [%-5p] %c:%L %m%n"/>
+            <ThresholdFilter level="debug" onmatch="ACCEPT" onMismatch="DENY"/>
+        </RollingFile>
+
+        <!--
+            以大小为策略进行日志封存，%i用于记录封存文件的生成先后顺序（），.zip/.gz等指定压缩格式
+            immediateFlush：log4j2接收到日志事件时，是否立即将日志刷到磁盘。默认为true。
+        -->
+<!--        <RollingFile name="sizedRollFile" fileName="${LOG_HOME}/size_roll_file.log" immediateFlush="true"-->
+<!--                     filePattern="${LOG_HOME}/$${date:yyyy-MM-dd}/sizerollfile-%d{yyyy-MM-dd HH}-%i.log.zip">-->
+<!--            <PatternLayout pattern="[online_point_read] %-d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] %c:%L %m%n"/>-->
+<!--            &lt;!&ndash; 当有多个策略时，使用Policies 标签&ndash;&gt;-->
+<!--            <Policies>-->
+<!--                <TimeBasedTriggeringPolicy />-->
+<!--                &lt;!&ndash;基于大小的触发策略，size指定大小&ndash;&gt;-->
+<!--                <SizeBasedTriggeringPolicy size="20 MB"/>-->
+<!--            </Policies>-->
+<!--            <Filters>-->
+<!--                <thresholdFilter level="debug" onmatch="ACCEPT" onMismatch="DENY"/>-->
+<!--            </Filters>-->
+<!--            &lt;!&ndash;-->
+<!--                控制生成的封存文件数量的一种策略，max控制filePattern 中的%i ,不指定默认为7，-->
+<!--                （就是你只能看见7个封存的文件，多余的你可以理解为覆盖掉了）-->
+<!--                这虽然也是一种策略，但是放置在策略标签之外-->
+<!--            &ndash;&gt;-->
+<!--            <DefaultRolloverStrategy max="7" />-->
+<!--        </RollingFile>-->
+    </Appenders>
+
+    <Loggers>
+        <!-- 定义根日志 -->
+        <!--
+            level ： 指定根日志的日志输出级别,ThresholdFilter生效其设置的日志级别输出取决于此
+            例：如果跟记录器的日志级别设置成error,那么追加器也不会输出error级别一下的日志
+        -->
+        <Root level="info">
+            <!-- 引用日志追加器，和上面定义的追加器的名称一样-->
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="file"/>
+            <AppenderRef ref="rollingFile"/>
+<!--            <AppenderRef ref="sizedRollFile"/>-->
+        </Root>
+
+        <!--
+            Logger:定义其他记录器，和根记录器存在继承关系， 一般用于设置单独的包的日志打印级别
+            additivity : 设定是否继承父记录器的追加器
+        -->
+
+<!--        <Logger name="org.springframework.boot" level="debug" additivity="false">-->
+<!--            <AppenderRef ref="console"/>-->
+<!--        </Logger>-->
+    </Loggers>
+
+</configuration>

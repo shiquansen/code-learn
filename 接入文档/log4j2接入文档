@@ -1,0 +1,42 @@
+1. 引入jar包并排包(springboot默认的logback)
+```
+  <dependency> <!-- 引入log4j2依赖 -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions><!-- 去掉springboot默认配置 -->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <exclusions><!-- 去掉springboot默认配置 -->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+```
+2. 在application中加入log配置文件映射文件路径
+    ```
+    logging.config=classpath:log4j2.xml
+    ```
+      
+3. 引入`log4j2.xml`,根据自定义配置完成配置
+    ```
+        path:image/log4j2/log4j2.xml
+    ```
+4. 启动项目，根据`<property name="LOG_HOME">log</property>`,这个路径去查看文件是否生成生效(log是相对路径，/log绝对路径)
+
+5. 注解配置,未完待续。。。。。。 
+    
