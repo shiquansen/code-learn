@@ -2,12 +2,14 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
         <module name="admin" />
+        <module name="juc" />
         <module name="learn" />
       </profile>
     </annotationProcessing>
@@ -16,6 +18,7 @@
       <module name="core" target="1.7" />
       <module name="demo" target="1.7" />
       <module name="framework" target="1.7" />
+      <module name="juc" target="1.7" />
       <module name="learn" target="1.7" />
       <module name="untitled" target="1.7" />
       <module name="util" target="1.7" />
@@ -27,6 +30,7 @@
       <module name="core" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="framework" options="-parameters" />
+      <module name="juc" options="-parameters" />
       <module name="learn" options="-parameters" />
       <module name="util" options="-parameters" />
     </option>
