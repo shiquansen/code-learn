@@ -13,7 +13,7 @@ import java.util.zip.Deflater;
  * 解压或者打包zip
  */
 
-public class ZipUtils {
+public class ZipUtil {
 
     private final static int BUFFER_SIZE= 1024 * 8 * 10;
     /**
