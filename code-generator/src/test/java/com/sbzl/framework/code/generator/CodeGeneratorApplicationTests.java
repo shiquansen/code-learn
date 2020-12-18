@@ -8,6 +8,7 @@ class CodeGeneratorApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("==");
     }
 
 }
