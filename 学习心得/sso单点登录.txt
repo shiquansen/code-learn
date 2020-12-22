@@ -1,0 +1,46 @@
+1. 为什么需要登录
+    -   因为http是无状态的,属于用户的资料无法认证（识别用户）
+
+2. 普通登录实现
+    -   用户请求使用用户，密码登录成功后存到session，然后发放一个标志给用户，用户将这个存入cookie，
+        然后每次请求带上cookie，服务端通过cookie转换拿对应的session做对比实现认证。
+
+3. 同域下的单点登录（保存到顶域，cookie不变，session共享）
+    -   一个企业一般情况下只有一个域名，通过二级域名区分不同的系统。比如我们有个域名叫做：
+        a.com，同时有两个业务系统分别为：app1.a.com和app2.a.com。我们要做单点登录（SSO），需要一个登录系统，叫做：sso.a.com。
+        我们只要在sso.a.com登录，app1.a.com和app2.a.com就也登录了。通过上面的登陆认证机制，我们可以知道，在sso.a.com中登录了，
+        其实是在sso.a.com的服务端的session中记录了登录状态，同时在浏览器端（Browser）的sso.a.com下写入了Cookie。
+        那么我们怎么才能让app1.a.com和app2.a.com登录呢？这里有两个问题：
+
+    -   Cookie是不能跨域的，我们Cookie的domain属性是sso.a.com，在给app1.a.com和app2.a.com发送请求是带不上的。
+        sso、app1和app2是不同的应用，它们的session存在自己的应用内，是不共享的。
+
+    -   那么我们如何解决这两个问题呢？针对第一个问题，sso登录以后，可以将Cookie的域设置为顶域，即.a.com，
+        这样所有子域的系统都可以访问到顶域的Cookie。我们在设置Cookie时，只能设置顶域和自己的域，不能设置其他的域。
+        比如：我们不能在自己的系统中给baidu.com的域设置Cookie。
+
+    -   Cookie的问题解决了，我们再来看看session的问题。我们在sso系统登录了，这时再访问app1，Cookie也带到了app1的服务端（Server），
+        app1的服务端怎么找到这个Cookie对应的Session呢？这里就要把3个系统的Session共享。共享Session的解决方案有很多，
+        例如：Spring-Session。这样第2个问题也解决了。
+        同域下的单点登录就实现了，但这还不是真正的单点登录。
+
+4. 不同域名下的单点
+    -   用户访问app系统，app系统是需要登录的，但用户现在没有登录。
+        跳转到CAS server，即SSO登录系统，以后图中的CAS Server我们统一叫做SSO系统。 SSO系统也没有登录，弹出用户登录页。
+        用户填写用户名、密码，SSO系统进行认证后，将登录状态写入SSO的session，浏览器（Browser）中写入SSO域下的Cookie。
+        SSO系统登录完成后会生成一个ST（Service Ticket），然后跳转到app系统，同时将ST作为参数传递给app系统。
+        app系统拿到ST后，从后台向SSO发送请求，验证ST是否有效。
+        验证通过后，app系统将登录状态写入session并设置app域下的Cookie。
+        至此，跨域单点登录就完成了。以后我们再访问app系统时，app就是登录的。接下来，我们再看看访问app2系统时的流程。
+
+        用户访问app2系统，app2系统没有登录，跳转到SSO。
+        由于SSO已经登录了，不需要重新登录认证。
+        SSO生成ST，浏览器跳转到app2系统，并将ST作为参数传递给app2。
+        app2拿到ST，后台访问SSO，验证ST是否有效。
+        验证成功后，app2将登录状态写入session，并在app2域下写入Cookie。
+        这样，app2系统不需要走登录流程，就已经是登录了。SSO，app和app2在不同的域，它们之间的session不共享也是没问题的。
+
+        作者：牛初九
+        链接：https://www.jianshu.com/p/75edcc05acfd
+        来源：简书
+        著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

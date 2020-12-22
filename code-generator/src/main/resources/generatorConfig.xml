@@ -3,8 +3,12 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-
-    <context id="mysql" targetRuntime="MyBatis3">
+    <!--
+      targetRuntime:设置自动生成的版本
+      MyBatis3:
+      MyBatis3Simple:简单增删改查
+      -->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
         <!-- 当表名或者字段名为SQL关键字的时候，可以设置该属性为true，MBG会自动给表名或字段名添加**分隔符**。 -->
         <property name="autoDelimitKeywords" value="true" />
         <property name="javaFileEncoding" value="UTF-8" />
@@ -34,8 +38,8 @@
                         connectionURL="jdbc:mysql://127.0.0.1:3306/bbk_eden?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT"
                         userId="root"
                         password="root">
-            <property name="useInformationSchema" value="true" />
-            <property name="remarksReporting" value="true" />
+<!--            <property name="useInformationSchema" value="true" />-->
+<!--            <property name="remarksReporting" value="true" />-->
         </jdbcConnection>
 
         <!-- java类型处理器 用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl； 注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和
@@ -61,17 +65,17 @@
 
 
         <!-- 生成DAO的包名和位置 -->
-        <javaClientGenerator type="XMLMAPPER"
+        <javaClientGenerator type="mapper"
                              targetPackage="com.sbzl.framework.code.generator.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="%"/><!-- 所有表 -->
-<!--        <table tableName="t_catalog" domainObjectName="Catalog"-->
-<!--               enableCountByExample="false" enableUpdateByExample="false"-->
-<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
-<!--               selectByExampleQueryId="false">-->
-<!--        </table>-->
+<!--        <table tableName="%" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>&lt;!&ndash; 所有表 &ndash;&gt;-->
+        <table tableName="t_catalog" domainObjectName="Catalog"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
 
     </context>
 

@@ -50,11 +50,16 @@
 
         <dependency>
             <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.5</version>
+            <artifactId>mybatis-generator-maven-plugin</artifactId>
+            <version>1.4.0</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
 
     </dependencies>
 
@@ -65,11 +70,26 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!--MBG插件-->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.6</version>
+                <version>1.4.0</version>
+                <dependencies>
+                    <!-- 此处需要引入mysql依赖，不然会报异常 -->
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.13</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <!-- generator 工具配置文件的位置 -->
+                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                    <!-- 是否覆盖 -->
+                    <!-- 此处要特别注意,如果不加这个设置会导致每次运行都会在原目录再次创建-->
+                    <overwrite>true</overwrite>
+                </configuration>
             </plugin>
         </plugins>
     </build>
