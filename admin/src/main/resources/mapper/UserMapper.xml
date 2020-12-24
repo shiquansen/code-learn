@@ -7,6 +7,10 @@
         insert into my_user(username, password) values (#{userName}, #{password})
     </insert>
 
+    <update id="update">
+        update my_user password = #{password} where id = #{id}
+    </update>
+
     <select id="selectByName" resultType="com.sbzl.framework.admin.system.model.User">
         select * from my_user where username = #{userName}
     </select>

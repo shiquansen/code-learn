@@ -35,9 +35,11 @@
 
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/bbk_eden?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT"
+                        connectionURL="jdbc:mysql://localhost:3306/x02_business_book?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT"
                         userId="root"
                         password="root">
+<!--            防止生成其他库表的do-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
 <!--            <property name="useInformationSchema" value="true" />-->
 <!--            <property name="remarksReporting" value="true" />-->
         </jdbcConnection>
@@ -52,13 +54,13 @@
 
         <!-- 生成模型的包名和位置 java实体类 -->
         <javaModelGenerator
-                targetPackage="com.sbzl.framework.code.generator.domain" targetProject="src/main/java">
+                targetPackage="com.sbzl.framework.multi.datasource.pojo.x02" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- 生成映射文件的包名和位置 -->
-        <sqlMapGenerator targetPackage="mapper"
+        <sqlMapGenerator targetPackage="mapper.x02"
                          targetProject="src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
@@ -66,15 +68,30 @@
 
         <!-- 生成DAO的包名和位置 -->
         <javaClientGenerator type="mapper"
-                             targetPackage="com.sbzl.framework.code.generator.mapper" targetProject="src/main/java">
+                             targetPackage="com.sbzl.framework.multi.datasource.dao.x02" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
 <!--        <table tableName="%" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>&lt;!&ndash; 所有表 &ndash;&gt;-->
-        <table tableName="t_catalog" domainObjectName="Catalog"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
+        <table tableName="t_business_book" domainObjectName="BookDO"
+               enableInsert="true"
+               enableDeleteByPrimaryKey="true"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true">
+        </table>
+
+        <table tableName="t_grade" domainObjectName="GradeDO"
+               enableInsert="true"
+               enableDeleteByPrimaryKey="true"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true">
+        </table>
+
+        <table tableName="t_publisher" domainObjectName="PublisherDO"
+               enableInsert="true"
+               enableDeleteByPrimaryKey="true"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true">
         </table>
 
     </context>

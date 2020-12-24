@@ -1,4 +1,4 @@
-package com.sbzl.framework.admin.config;//package com.sbzl.framework.admin.config;
+package com.sbzl.framework.admin.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sbzl.framework.admin.system.model.User;
@@ -33,10 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-//                .antMatchers( "/admin/test").permitAll()
-                .anyRequest().authenticated()
-                .and().formLogin().and().logout().permitAll();
+            .authorizeRequests()
+            .antMatchers( "/web/*").permitAll()
+            .anyRequest().authenticated()
+            .and().formLogin().and().logout().permitAll();
         http.csrf().disable();
     }
 
@@ -50,84 +50,63 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/js/**","/css/**","/images/**");
     }
 
+    @Autowired(required = false)
+    private MyUserService myUserService;
 
-    @Autowired
-    private MyUserService userService;
-
-    @Autowired
+    @Autowired(required = false)
     private MyPasswordEncoder myPasswordEncoder;
-
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        /**
-         * 基于内存的认证
-         */
-//        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("admin")
-//                                     .password(new BCryptPasswordEncoder().encode("admin")).roles("ADMIN");
-//        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("user")
-//                                     .password(new BCryptPasswordEncoder().encode("user")).roles("USER");
-        /**
-         * 自定义认证加解密
-         */
-    auth.userDetailsService(userService).passwordEncoder(myPasswordEncoder);
-        /**
-         * 固定的表结构
-         * @see org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl
-         */
-//    auth.jdbcAuthentication().usersByUsernameQuery("").authoritiesByUsernameQuery("").passwordEncoder(myPasswordEncoder);
+        auth.userDetailsService(myUserService).passwordEncoder(myPasswordEncoder);
     }
 
 
-    /**
-     * 登录Filter
-     * @return
-     */
-    @Bean
-    SessionRegistryImpl sessionRegistry() {
-        return new SessionRegistryImpl();
-    }
-    @Bean
-    LoginFilter loginFilter() throws Exception {
-        LoginFilter loginFilter = new LoginFilter();
-        loginFilter.setAuthenticationSuccessHandler((request, response, authentication) -> {
-                    response.setContentType("application/json;charset=utf-8");
-                    PrintWriter out = response.getWriter();
-                    User user = (User) authentication.getPrincipal();
-                    user.setPassword(null);
-                    ResultVO ok = ResultVO.ok("登录成功!", user);
-                    String s = new ObjectMapper().writeValueAsString(ok);
-                    out.write(s);
-                    out.flush();
-                    out.close();
-                }
-        );
-        loginFilter.setAuthenticationFailureHandler((request, response, exception) -> {
-                    response.setContentType("application/json;charset=utf-8");
-                    PrintWriter out = response.getWriter();
-                    ResultVO respBean = ResultVO.error(exception.getMessage());
-                    if (exception instanceof LockedException) {
-                        respBean.setMsg("账户被锁定，请联系管理员!");
-                    } else if (exception instanceof CredentialsExpiredException) {
-                        respBean.setMsg("密码过期，请联系管理员!");
-                    } else if (exception instanceof AccountExpiredException) {
-                        respBean.setMsg("账户过期，请联系管理员!");
-                    } else if (exception instanceof DisabledException) {
-                        respBean.setMsg("账户被禁用，请联系管理员!");
-                    } else if (exception instanceof BadCredentialsException) {
-                        respBean.setMsg("用户名或者密码输入错误，请重新输入!");
-                    }
-                    out.write(new ObjectMapper().writeValueAsString(respBean));
-                    out.flush();
-                    out.close();
-                }
-        );
-        loginFilter.setAuthenticationManager(authenticationManagerBean());
-        loginFilter.setFilterProcessesUrl("/doLogin");
-        ConcurrentSessionControlAuthenticationStrategy sessionStrategy = new ConcurrentSessionControlAuthenticationStrategy(sessionRegistry());
-        sessionStrategy.setMaximumSessions(1);
-        loginFilter.setSessionAuthenticationStrategy(sessionStrategy);
-        return loginFilter;
-    }
+//    @Bean
+//    SessionRegistryImpl sessionRegistry() {
+//        return new SessionRegistryImpl();
+//    }
+
+//    @Bean
+//    LoginFilter loginFilter() throws Exception {
+//        LoginFilter loginFilter = new LoginFilter();
+//        loginFilter.setAuthenticationSuccessHandler((request, response, authentication) -> {
+//                    response.setContentType("application/json;charset=utf-8");
+//                    PrintWriter out = response.getWriter();
+//                    User user = (User) authentication.getPrincipal();
+//                    user.setPassword(null);
+//                    ResultVO ok = ResultVO.ok("登录成功!", user);
+//                    String s = new ObjectMapper().writeValueAsString(ok);
+//                    out.write(s);
+//                    out.flush();
+//                    out.close();
+//                }
+//        );
+//        loginFilter.setAuthenticationFailureHandler((request, response, exception) -> {
+//                    response.setContentType("application/json;charset=utf-8");
+//                    PrintWriter out = response.getWriter();
+//                    ResultVO respBean = ResultVO.error(exception.getMessage());
+//                    if (exception instanceof LockedException) {
+//                        respBean.setMsg("账户被锁定，请联系管理员!");
+//                    } else if (exception instanceof CredentialsExpiredException) {
+//                        respBean.setMsg("密码过期，请联系管理员!");
+//                    } else if (exception instanceof AccountExpiredException) {
+//                        respBean.setMsg("账户过期，请联系管理员!");
+//                    } else if (exception instanceof DisabledException) {
+//                        respBean.setMsg("账户被禁用，请联系管理员!");
+//                    } else if (exception instanceof BadCredentialsException) {
+//                        respBean.setMsg("用户名或者密码输入错误，请重新输入!");
+//                    }
+//                    out.write(new ObjectMapper().writeValueAsString(respBean));
+//                    out.flush();
+//                    out.close();
+//                }
+//        );
+//        loginFilter.setAuthenticationManager(authenticationManagerBean());
+//        loginFilter.setFilterProcessesUrl("/doLogin");
+//        ConcurrentSessionControlAuthenticationStrategy sessionStrategy = new ConcurrentSessionControlAuthenticationStrategy(sessionRegistry());
+//        sessionStrategy.setMaximumSessions(1);
+//        loginFilter.setSessionAuthenticationStrategy(sessionStrategy);
+//        return loginFilter;
+//    }
 }

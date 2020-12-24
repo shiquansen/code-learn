@@ -1,8 +1,10 @@
 package com.sbzl.framework.admin.system.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 public class User {
     private Integer id;
 

@@ -1,11 +1,8 @@
 package com.sbzl.framework.admin.util;
 
-import com.sbzl.framework.admin.web.path.AdminPath;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FieldUtils {
@@ -25,10 +22,6 @@ public class FieldUtils {
             e.printStackTrace();
         }
         return stringList.toArray(new String[stringList.size()]);
-    }
-
-    public static void main(String[] args) {
-        Arrays.stream(test(AdminPath.class)).forEach(System.out::println);
     }
 
 }

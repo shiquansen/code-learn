@@ -20,10 +20,8 @@ class AdminApplicationTests {
 
     @Test
     void contextLoads() throws SQLException {
-        User user = new User();
-        user.setUserName("shiquansen");
-        user.setPassword("admin");
-        userService.insert("shiquansen","admin");
+
+        userService.insert("admin","admin");
 //        System.out.println(dataSource.getConnection());
     }
 

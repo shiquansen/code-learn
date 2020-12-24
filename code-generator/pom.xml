@@ -75,7 +75,7 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.4.0</version>
                 <dependencies>
-                    <!-- 此处需要引入mysql依赖，不然会报异常 -->
+                    <!-- 此处需要引入mysql依赖，不然会报异常, 低版本的情况下使用5.1，不然不能生成insert之外的 -->
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
