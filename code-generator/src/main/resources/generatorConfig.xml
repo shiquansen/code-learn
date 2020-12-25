@@ -20,7 +20,7 @@
         <property name="endingDelimiter" value="`" />
         <!-- 生成的pojo，将implements Serializable -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
-        <plugin type="org.mybatis.generator.plugin.ext.impl.MysqlPaginationPlugin"/>
+        <!--        <plugin type="org.mybatis.generator.plugin.ext.impl.MysqlPaginationPlugin"/>-->
         <!-- 		<plugin type="org.mybatis.generator.plugin.ext.impl.EntityNullPlugin"></plugin>-->
 
         <commentGenerator>
@@ -35,9 +35,9 @@
 
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/x02_business_book?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT"
+                        connectionURL="jdbc:mysql://172.28.191.82:3306/chinese_full_online_1.1.0?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT"
                         userId="root"
-                        password="root">
+                        password="1234">
 <!--            防止生成其他库表的do-->
             <property name="nullCatalogMeansCurrent" value="true"/>
 <!--            <property name="useInformationSchema" value="true" />-->
@@ -73,13 +73,13 @@
         </javaClientGenerator>
 
 <!--        <table tableName="%" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>&lt;!&ndash; 所有表 &ndash;&gt;-->
-        <table tableName="t_business_book" domainObjectName="BookDO"
+        <table tableName="t_book" domainObjectName="BookDO"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
 
-        <table tableName="t_grade" domainObjectName="GradeDO"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
+<!--        <table tableName="t_grade" domainObjectName="GradeDO"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
 
         <table tableName="t_publisher" domainObjectName="PublisherDO"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
