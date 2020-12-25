@@ -16,11 +16,7 @@ public class DownloadServiceImpl implements DownloadService {
 
     try{
             File file = new File("C:\\Users\\k0802365\\Desktop\\语文平台接口.docx");
-
             String filename = file.getName();
-            // 取得文件的后缀名。
-            String ext = filename.substring(filename.lastIndexOf(".") + 1).toUpperCase();
-
             // 以流的形式下载文件。
             InputStream fis = new BufferedInputStream(new FileInputStream(file));
             byte[] buffer = new byte[fis.available()];

@@ -20,16 +20,16 @@
         <property name="endingDelimiter" value="`" />
         <!-- 生成的pojo，将implements Serializable -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
-        <!-- 		<plugin type="org.mybatis.generator.plugin.ext.impl.MysqlPaginationPlugin"></plugin>  -->
+        <plugin type="org.mybatis.generator.plugin.ext.impl.MysqlPaginationPlugin"/>
         <!-- 		<plugin type="org.mybatis.generator.plugin.ext.impl.EntityNullPlugin"></plugin>-->
 
         <commentGenerator>
             <!-- type="org.mybatis.generator.plugin.ext.impl.CommentExtGenerator"> -->
             <!--阻止生成注释  false为生成-->
-            <property name="suppressAllComments" value="false" />
+            <property name="suppressAllComments" value="true" />
             <property name="javaFileEncoding" value="UTF-8" />
             <!--阻止生成日期  false为生成-->
-            <property name="suppressDate" value="false" />
+            <property name="suppressDate" value="true" />
             <property name="addRemarkComments" value="true" />
         </commentGenerator>
 
@@ -54,13 +54,13 @@
 
         <!-- 生成模型的包名和位置 java实体类 -->
         <javaModelGenerator
-                targetPackage="com.sbzl.framework.multi.datasource.pojo.x02" targetProject="src/main/java">
+                targetPackage="com.eebbk.onlinepointread.pojo" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- 生成映射文件的包名和位置 -->
-        <sqlMapGenerator targetPackage="mapper.x02"
+        <sqlMapGenerator targetPackage="mapper"
                          targetProject="src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
@@ -68,30 +68,21 @@
 
         <!-- 生成DAO的包名和位置 -->
         <javaClientGenerator type="mapper"
-                             targetPackage="com.sbzl.framework.multi.datasource.dao.x02" targetProject="src/main/java">
+                             targetPackage="com.eebbk.onlinepointread.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
 <!--        <table tableName="%" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>&lt;!&ndash; 所有表 &ndash;&gt;-->
         <table tableName="t_business_book" domainObjectName="BookDO"
-               enableInsert="true"
-               enableDeleteByPrimaryKey="true"
-               enableSelectByPrimaryKey="true"
-               enableUpdateByPrimaryKey="true">
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
 
         <table tableName="t_grade" domainObjectName="GradeDO"
-               enableInsert="true"
-               enableDeleteByPrimaryKey="true"
-               enableSelectByPrimaryKey="true"
-               enableUpdateByPrimaryKey="true">
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
 
         <table tableName="t_publisher" domainObjectName="PublisherDO"
-               enableInsert="true"
-               enableDeleteByPrimaryKey="true"
-               enableSelectByPrimaryKey="true"
-               enableUpdateByPrimaryKey="true">
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
 
     </context>
