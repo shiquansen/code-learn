@@ -1,0 +1,19 @@
+Java必知必会的常用类库和API
+    一、日志相关类库          logback 、log4j2 、log4j 、 slf4j
+    二、JSON解析库            fastjson 、 jackson 、 Gson
+    三、通用类库              Apache Commons 、Google Guava
+    四、HTTP库                Apache HttpClient 、RestTemplate 、OkHttp
+    五、单元测试库            junit
+    六、XML解析库             Xerces2 、dom4j
+    七、Excel读写库           Apache POI
+    八、字节码库              ASM
+    九、数据库连接池库        Druid、Hikari
+    十、消息传递库             rabbtmq、rocketmq、kafka
+    十一、PDF处理库           iText 、 Apache FOP
+    十二、日期和时间库          Java 8
+    十三、集合类库             Apache Commons Collections 、Google Collections
+    十四、邮件API            javax.mail 、 Apache Commons Email
+    十五、HTML解析库          jsoup
+    十六、加密库              Apache Commons-Commons Codec
+    十七、嵌入式SQL数据库库   H2、 HSQL
+    十八、网络库              netty

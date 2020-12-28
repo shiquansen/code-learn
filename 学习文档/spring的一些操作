@@ -1,0 +1,7 @@
+1. AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MessageConfiguration.class);
+    获取注解上下文  ctx.getBean("message")
+
+2. ApplicationContext ap = new ClassPathXmlApplicationContext("applicationContext.xml");
+    获取xml上下文    ap.getBean("message")
+
+3. 自定义注册Bean  实现接口  （ApplicationContextAware）

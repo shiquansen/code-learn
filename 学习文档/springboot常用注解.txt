@@ -1,0 +1,4 @@
+官网的所有配置
+    https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
+@ConfigurationProperties(prefix = "home")   获取前缀自动注入
+

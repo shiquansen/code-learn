@@ -1,0 +1,36 @@
+1. 分包
+    image
+    bin  (binaries)存放二进制可执行文件
+    sbin  (super user binaries)存放二进制可执行文件，只有root才能访问
+    etc (etcetera)存放系统配置文件
+    usr  (unix shared resources)用于存放共享的系统资源
+    home 存放用户文件的根目录
+    root  超级用户目录
+    dev (devices)用于存放设备文件
+    lib  (library)存放跟文件系统中的程序运行所需要的共享库及内核模块
+    mnt  (mount)系统管理员安装临时文件系统的安装点
+    boot 存放用于系统引导时使用的各种文件
+    tmp  (temporary)用于存放各种临时文件
+    var  (variable)用于存放运行时需要改变数据的文件
+
+2.常用命令
+    2.1 操作文件及目录
+
+    2.2 系统常用命令
+
+    2.3 压缩解压缩
+
+    2.4 文件权限操作
+
+3. 常用快捷键和符号
+
+4. vim编辑器
+    4.1 修改文本
+
+    4.2 定位命令
+
+    4.3 替换和取消命令
+
+    4.4 删除命令
+
+    4.5 常用快捷键

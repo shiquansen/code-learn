@@ -1,0 +1,20 @@
+1. 镜像替换
+    <mirror>
+        <id>nexus-aliyun</id>
+        <mirrorOf>*</mirrorOf>
+        <name>Nexus aliyun</name>
+        <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+    </mirror>
+2.  有的时候，依赖虽然下载失败了，但是相关文件夹中却多了以 .lastUpdated为后缀的文件，此时，如果开发者在开发工具中反复导入，
+    会发现始终无法导入成功，这个时候就需要删除本地仓库中相关的 .lastUpdated文件，可以通过文件搜索找到本地仓库中所有的以
+     .lastUpdated为后缀的文件。
+
+
+3. maven主要操作
+    清理clean：将以前编译得到的旧文件class字节码文件删除
+    编译compile：将java源程序编译成class字节码文件
+    测试test：自动测试，自动调用junit程序
+    报告report：测试程序执行的结果
+    打包package：动态Web工程打War包，java工程打jar
+    安装install：Maven特定的概念-----将打包得到的文件复制到“仓库”中的指定位置
+    部署deploy：将动态Web工程生成的war包复制到Servlet容器下，使其可以运行
