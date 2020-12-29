@@ -73,16 +73,16 @@
         </javaClientGenerator>
 
 <!--        <table tableName="%" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>&lt;!&ndash; 所有表 &ndash;&gt;-->
-        <table tableName="t_book" domainObjectName="BookDO"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="t_book" domainObjectName="BookDO">
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
         </table>
 
-<!--        <table tableName="t_grade" domainObjectName="GradeDO"-->
+        <table tableName="t_grade" domainObjectName="GradeDO">
 <!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
-<!--        </table>-->
+        </table>
 
-        <table tableName="t_publisher" domainObjectName="PublisherDO"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="t_publisher" domainObjectName="PublisherDO">
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
         </table>
 
     </context>
