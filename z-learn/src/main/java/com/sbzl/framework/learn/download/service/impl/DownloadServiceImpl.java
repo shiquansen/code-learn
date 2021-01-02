@@ -1,6 +1,6 @@
-package com.sbzl.framework.learn.service.impl;
+package com.sbzl.framework.learn.download.service.impl;
 
-import com.sbzl.framework.learn.service.DownloadService;
+import com.sbzl.framework.learn.download.service.DownloadService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;

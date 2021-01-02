@@ -1,4 +1,4 @@
-package com.sbzl.framework.learn.config;
+package com.sbzl.framework.learn.staticResource.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
