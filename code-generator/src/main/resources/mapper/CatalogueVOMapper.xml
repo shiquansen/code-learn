@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eebbk.onlinepointread.dao.CatalogueVOMapper">
+  <resultMap id="BaseResultMap" type="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="subtitle" jdbcType="VARCHAR" property="subtitle" />
+    <result column="name_en" jdbcType="VARCHAR" property="nameEn" />
+    <result column="name_zh" jdbcType="VARCHAR" property="nameZh" />
+    <result column="full_en_name" jdbcType="VARCHAR" property="fullEnName" />
+    <result column="full_zn_name" jdbcType="VARCHAR" property="fullZnName" />
+    <result column="content_type" jdbcType="VARCHAR" property="contentType" />
+    <result column="content_order" jdbcType="INTEGER" property="contentOrder" />
+    <result column="inner_order" jdbcType="INTEGER" property="innerOrder" />
+    <result column="page_num" jdbcType="VARCHAR" property="pageNum" />
+    <result column="page_from" jdbcType="INTEGER" property="pageFrom" />
+    <result column="page_to" jdbcType="INTEGER" property="pageTo" />
+    <result column="content_level" jdbcType="INTEGER" property="contentLevel" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="book_id" jdbcType="INTEGER" property="bookId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="if_father" jdbcType="BIT" property="ifFather" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+    <result column="catalogue_type" jdbcType="INTEGER" property="catalogueType" />
+    <result column="model_name_zh" jdbcType="VARCHAR" property="modelNameZh" />
+    <result column="model_name_en" jdbcType="VARCHAR" property="modelNameEn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, subtitle, name_en, name_zh, full_en_name, full_zn_name, content_type, content_order, 
+    inner_order, page_num, page_from, page_to, content_level, parent_id, book_id, create_time, 
+    if_father, `attribute`, catalogue_type, model_name_zh, model_name_en
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_english_catalogue
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_english_catalogue
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    insert into t_english_catalogue (id, subtitle, name_en, 
+      name_zh, full_en_name, full_zn_name, 
+      content_type, content_order, inner_order, 
+      page_num, page_from, page_to, 
+      content_level, parent_id, book_id, 
+      create_time, if_father, `attribute`, 
+      catalogue_type, model_name_zh, model_name_en
+      )
+    values (#{id,jdbcType=INTEGER}, #{subtitle,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, 
+      #{nameZh,jdbcType=VARCHAR}, #{fullEnName,jdbcType=VARCHAR}, #{fullZnName,jdbcType=VARCHAR}, 
+      #{contentType,jdbcType=VARCHAR}, #{contentOrder,jdbcType=INTEGER}, #{innerOrder,jdbcType=INTEGER}, 
+      #{pageNum,jdbcType=VARCHAR}, #{pageFrom,jdbcType=INTEGER}, #{pageTo,jdbcType=INTEGER}, 
+      #{contentLevel,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{ifFather,jdbcType=BIT}, #{attribute,jdbcType=VARCHAR}, 
+      #{catalogueType,jdbcType=INTEGER}, #{modelNameZh,jdbcType=VARCHAR}, #{modelNameEn,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    insert into t_english_catalogue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="subtitle != null">
+        subtitle,
+      </if>
+      <if test="nameEn != null">
+        name_en,
+      </if>
+      <if test="nameZh != null">
+        name_zh,
+      </if>
+      <if test="fullEnName != null">
+        full_en_name,
+      </if>
+      <if test="fullZnName != null">
+        full_zn_name,
+      </if>
+      <if test="contentType != null">
+        content_type,
+      </if>
+      <if test="contentOrder != null">
+        content_order,
+      </if>
+      <if test="innerOrder != null">
+        inner_order,
+      </if>
+      <if test="pageNum != null">
+        page_num,
+      </if>
+      <if test="pageFrom != null">
+        page_from,
+      </if>
+      <if test="pageTo != null">
+        page_to,
+      </if>
+      <if test="contentLevel != null">
+        content_level,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="ifFather != null">
+        if_father,
+      </if>
+      <if test="attribute != null">
+        `attribute`,
+      </if>
+      <if test="catalogueType != null">
+        catalogue_type,
+      </if>
+      <if test="modelNameZh != null">
+        model_name_zh,
+      </if>
+      <if test="modelNameEn != null">
+        model_name_en,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="subtitle != null">
+        #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null">
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameZh != null">
+        #{nameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="fullEnName != null">
+        #{fullEnName,jdbcType=VARCHAR},
+      </if>
+      <if test="fullZnName != null">
+        #{fullZnName,jdbcType=VARCHAR},
+      </if>
+      <if test="contentType != null">
+        #{contentType,jdbcType=VARCHAR},
+      </if>
+      <if test="contentOrder != null">
+        #{contentOrder,jdbcType=INTEGER},
+      </if>
+      <if test="innerOrder != null">
+        #{innerOrder,jdbcType=INTEGER},
+      </if>
+      <if test="pageNum != null">
+        #{pageNum,jdbcType=VARCHAR},
+      </if>
+      <if test="pageFrom != null">
+        #{pageFrom,jdbcType=INTEGER},
+      </if>
+      <if test="pageTo != null">
+        #{pageTo,jdbcType=INTEGER},
+      </if>
+      <if test="contentLevel != null">
+        #{contentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ifFather != null">
+        #{ifFather,jdbcType=BIT},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogueType != null">
+        #{catalogueType,jdbcType=INTEGER},
+      </if>
+      <if test="modelNameZh != null">
+        #{modelNameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="modelNameEn != null">
+        #{modelNameEn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    update t_english_catalogue
+    <set>
+      <if test="subtitle != null">
+        subtitle = #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null">
+        name_en = #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameZh != null">
+        name_zh = #{nameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="fullEnName != null">
+        full_en_name = #{fullEnName,jdbcType=VARCHAR},
+      </if>
+      <if test="fullZnName != null">
+        full_zn_name = #{fullZnName,jdbcType=VARCHAR},
+      </if>
+      <if test="contentType != null">
+        content_type = #{contentType,jdbcType=VARCHAR},
+      </if>
+      <if test="contentOrder != null">
+        content_order = #{contentOrder,jdbcType=INTEGER},
+      </if>
+      <if test="innerOrder != null">
+        inner_order = #{innerOrder,jdbcType=INTEGER},
+      </if>
+      <if test="pageNum != null">
+        page_num = #{pageNum,jdbcType=VARCHAR},
+      </if>
+      <if test="pageFrom != null">
+        page_from = #{pageFrom,jdbcType=INTEGER},
+      </if>
+      <if test="pageTo != null">
+        page_to = #{pageTo,jdbcType=INTEGER},
+      </if>
+      <if test="contentLevel != null">
+        content_level = #{contentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        book_id = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ifFather != null">
+        if_father = #{ifFather,jdbcType=BIT},
+      </if>
+      <if test="attribute != null">
+        `attribute` = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogueType != null">
+        catalogue_type = #{catalogueType,jdbcType=INTEGER},
+      </if>
+      <if test="modelNameZh != null">
+        model_name_zh = #{modelNameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="modelNameEn != null">
+        model_name_en = #{modelNameEn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    update t_english_catalogue
+    set subtitle = #{subtitle,jdbcType=VARCHAR},
+      name_en = #{nameEn,jdbcType=VARCHAR},
+      name_zh = #{nameZh,jdbcType=VARCHAR},
+      full_en_name = #{fullEnName,jdbcType=VARCHAR},
+      full_zn_name = #{fullZnName,jdbcType=VARCHAR},
+      content_type = #{contentType,jdbcType=VARCHAR},
+      content_order = #{contentOrder,jdbcType=INTEGER},
+      inner_order = #{innerOrder,jdbcType=INTEGER},
+      page_num = #{pageNum,jdbcType=VARCHAR},
+      page_from = #{pageFrom,jdbcType=INTEGER},
+      page_to = #{pageTo,jdbcType=INTEGER},
+      content_level = #{contentLevel,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      book_id = #{bookId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      if_father = #{ifFather,jdbcType=BIT},
+      `attribute` = #{attribute,jdbcType=VARCHAR},
+      catalogue_type = #{catalogueType,jdbcType=INTEGER},
+      model_name_zh = #{modelNameZh,jdbcType=VARCHAR},
+      model_name_en = #{modelNameEn,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="parent_order" jdbcType="INTEGER" property="parentOrder" />
+    <result column="page_num" jdbcType="INTEGER" property="pageNum" />
+    <result column="page_from" jdbcType="INTEGER" property="pageFrom" />
+    <result column="page_to" jdbcType="INTEGER" property="pageTo" />
+    <result column="book_id" jdbcType="INTEGER" property="bookId" />
+    <result column="attribues" jdbcType="VARCHAR" property="attribues" />
+    <result column="theme" jdbcType="VARCHAR" property="theme" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="target_id" jdbcType="INTEGER" property="targetId" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="if_father" jdbcType="BIT" property="ifFather" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `name`, parent_order, page_num, page_from, page_to, book_id, attribues, theme, 
+    `type`, target_id, parent_id, `level`, if_father, update_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_catalogue
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_catalogue
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    insert into t_catalogue (id, `name`, parent_order, 
+      page_num, page_from, page_to, 
+      book_id, attribues, theme, 
+      `type`, target_id, parent_id, 
+      `level`, if_father, update_time, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentOrder,jdbcType=INTEGER}, 
+      #{pageNum,jdbcType=INTEGER}, #{pageFrom,jdbcType=INTEGER}, #{pageTo,jdbcType=INTEGER}, 
+      #{bookId,jdbcType=INTEGER}, #{attribues,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{targetId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, 
+      #{level,jdbcType=INTEGER}, #{ifFather,jdbcType=BIT}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    insert into t_catalogue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="parentOrder != null">
+        parent_order,
+      </if>
+      <if test="pageNum != null">
+        page_num,
+      </if>
+      <if test="pageFrom != null">
+        page_from,
+      </if>
+      <if test="pageTo != null">
+        page_to,
+      </if>
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="attribues != null">
+        attribues,
+      </if>
+      <if test="theme != null">
+        theme,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="targetId != null">
+        target_id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="ifFather != null">
+        if_father,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrder != null">
+        #{parentOrder,jdbcType=INTEGER},
+      </if>
+      <if test="pageNum != null">
+        #{pageNum,jdbcType=INTEGER},
+      </if>
+      <if test="pageFrom != null">
+        #{pageFrom,jdbcType=INTEGER},
+      </if>
+      <if test="pageTo != null">
+        #{pageTo,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="attribues != null">
+        #{attribues,jdbcType=VARCHAR},
+      </if>
+      <if test="theme != null">
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="targetId != null">
+        #{targetId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="ifFather != null">
+        #{ifFather,jdbcType=BIT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    update t_catalogue
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOrder != null">
+        parent_order = #{parentOrder,jdbcType=INTEGER},
+      </if>
+      <if test="pageNum != null">
+        page_num = #{pageNum,jdbcType=INTEGER},
+      </if>
+      <if test="pageFrom != null">
+        page_from = #{pageFrom,jdbcType=INTEGER},
+      </if>
+      <if test="pageTo != null">
+        page_to = #{pageTo,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        book_id = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="attribues != null">
+        attribues = #{attribues,jdbcType=VARCHAR},
+      </if>
+      <if test="theme != null">
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="targetId != null">
+        target_id = #{targetId,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="ifFather != null">
+        if_father = #{ifFather,jdbcType=BIT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
+    update t_catalogue
+    set `name` = #{name,jdbcType=VARCHAR},
+      parent_order = #{parentOrder,jdbcType=INTEGER},
+      page_num = #{pageNum,jdbcType=INTEGER},
+      page_from = #{pageFrom,jdbcType=INTEGER},
+      page_to = #{pageTo,jdbcType=INTEGER},
+      book_id = #{bookId,jdbcType=INTEGER},
+      attribues = #{attribues,jdbcType=VARCHAR},
+      theme = #{theme,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=INTEGER},
+      target_id = #{targetId,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      `level` = #{level,jdbcType=INTEGER},
+      if_father = #{ifFather,jdbcType=BIT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
