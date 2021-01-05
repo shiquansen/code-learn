@@ -13,4 +13,5 @@ public class Snowslide<T> {
     @Resource
     private RedisTemplateForString<T> redisTemplateForString;
 
+
 }
