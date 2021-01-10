@@ -18,6 +18,5 @@ public class StringTest {
     void contextLoads() {
         City city = cityService.findCityById(1L);
         city.setCityName("123456");
-        System.out.println(cityRedisTemplateForString.size("city_1"));
     }
 }

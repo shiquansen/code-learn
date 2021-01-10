@@ -54,7 +54,11 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public Long saveCity(City city) {
-        return cityMapper.saveCity(city);
+        Long i =  cityMapper.saveCity(city);
+        if(i != null){
+            redisTemplate.delete("city_" + i);
+        }
+        return i;
     }
 
     /**
