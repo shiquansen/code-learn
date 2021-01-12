@@ -65,53 +65,24 @@ public class Penetrate<T> {
 
     /**
      * 　　第二种是布隆过滤器
-     *
+     *        https://www.cnblogs.com/ysocean/p/12594982.html
      * 　　　　将数据库中所有的查询条件，放入布隆过滤器中，
      * 　　　　当一个查询请求过来时，先经过布隆过滤器进行查，如果判断请求查询值存在，则继续查；如果判断请求查询不存在，直接丢弃。
-     */
-
-    /**
+     *
+     * 1.redis bitmap实现
+     * 2.guava  实现
+     *
      * static <T> BloomFilter<T> create(Funnel<? super T> funnel, long expectedInsertions, double fpp, BloomFilter.Strategy strategy)
      * funnel是插入数据的Funnel，expectedInsertions是期望插入的元素总个数n，fpp即期望假阳性率p，strategy即哈希策略。
      *
      * https://www.cnblogs.com/luxianyu-s/p/12686466.html   布隆过滤器介绍
      * https://blog.csdn.net/tianyaleixiaowu/article/details/74739827   布隆过滤器使用
+     *
+     * bits即上文讲到的长度为m的布隆位数组，采用LockFreeBitArray类型做了封装。   （布隆数组）
+     * numHashFunctions即哈希函数的个数k。
+     * funnel是Funnel接口实现类的实例，它用于将任意类型T的输入数据转化为Java基本类型的数据（byte、int、char等等）。这里是会转化为byte。
+     * strategy是布隆过滤器的哈希策略，即数据如何映射到位数组，其具体方法在BloomFilterStrategies枚举中。
      */
-
-
-    private static int size = 1000000;
-    private static BloomFilter<Integer> bloomFilter = BloomFilter.create(Funnels.integerFunnel(), size, 0.0001);
-
-
-    public static void bloomFilter(){
-        /**
-         * bits即上文讲到的长度为m的布隆位数组，采用LockFreeBitArray类型做了封装。   （布隆数组）
-         * numHashFunctions即哈希函数的个数k。
-         * funnel是Funnel接口实现类的实例，它用于将任意类型T的输入数据转化为Java基本类型的数据（byte、int、char等等）。这里是会转化为byte。
-         * strategy是布隆过滤器的哈希策略，即数据如何映射到位数组，其具体方法在BloomFilterStrategies枚举中。
-         */
-        for (int i = 0; i < size; i++) {
-            bloomFilter.put(i);
-        }
-
-        for (int i = 0; i < size; i++) {
-            if (!bloomFilter.mightContain(i)) {
-                System.out.println("有坏人逃脱了");
-            }
-        }
-
-        List<Integer> list = new ArrayList<Integer>(1000);
-        for (int i = size + 10000; i < size + 20000; i++) {
-            if (bloomFilter.mightContain(i)) {
-                list.add(i);
-            }
-        }
-        System.out.println("有误伤的数量：" + list.size());
-    }
-
-    public static void main(String[] args) {
-        bloomFilter();
-    }
 
 
 

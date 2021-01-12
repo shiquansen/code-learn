@@ -1,0 +1,27 @@
+线程池带来的便捷
+    1. 减少系统因为频繁创建和销毁线程所带来的开销；
+    2. 自动管理线程，对使用方透明，使其可以专注于任务的构建。
+Executor
+执行器接口，也是最顶层的抽象核心接口， 分离了任务和任务的执行。
+ExecutorService
+在Executor的基础上提供了执行器生命周期管理，任务异步执行等功能。
+    Executors
+    生产具体的执行器的静态工厂
+
+    ScheduledExecutorService
+    在ExecutorService基础上提供了任务的延迟执行/周期执行的功能。
+
+    ThreadFactory
+    线程工厂，用于创建单个线程，减少手工创建线程的繁琐工作，同时能够复用工厂的特性。
+
+    AbstractExecutorService
+    ExecutorService的抽象实现，为各类执行器类的实现提供基础。
+
+    ThreadPoolExecutor
+    线程池Executor，也是最常用的Executor，可以以线程池的方式管理线程。
+
+    ScheduledThreadPoolExecutor
+    在ThreadPoolExecutor基础上，增加了对周期任务调度的支持。
+
+    ForkJoinPool
+    Fork/Join线程池，在JDK1.7时引入，时实现Fork/Join框架的核心类。
