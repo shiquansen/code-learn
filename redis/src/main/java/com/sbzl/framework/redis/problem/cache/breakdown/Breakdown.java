@@ -1,4 +1,4 @@
-package com.sbzl.framework.redis.problem.cache;
+package com.sbzl.framework.redis.problem.cache.breakdown;
 
 import com.sbzl.framework.redis.dataType.RedisTemplateForString;
 
@@ -14,8 +14,9 @@ public class Breakdown<T> {
     @Resource
     private RedisTemplateForString<T> redisTemplateForString;
 
-
-
     //设置热点数据永远不过期。
+
+
     //加互斥锁
+
 }
