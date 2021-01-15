@@ -16,23 +16,34 @@
 public class SwaggerConfig {
     @Bean
     public Docket createRestApi() {
+        //全局头信息
+        List<RequestParameter> parameters = new ArrayList<>();
+        parameters.add(new RequestParameterBuilder()
+                .name("accountId")
+                .description("用户属性")
+                .required(true)
+                .in(ParameterType.HEADER)
+                .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))
+                .required(false)
+                .build());
+
         return new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .globalRequestParameters(parameters);
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("X02在线点读接口文档")
                 .description("文档描述")
-                .contact(new Contact("步步高教育电子有限公司", "", "eebbk"))
+                .contact(new Contact("xxxx", "", "xxxx"))
                 .version("1.0")
                 .build();
     }
-}
 ```
 4. controller、model等加上注解
 ```
