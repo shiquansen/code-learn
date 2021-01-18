@@ -1,0 +1,20 @@
+Redis的所有数据都存储在内存中，但是内存是一种有限的资源，所以为了防止Redis无限制的使用内存，在启动Redis时可以通过配置项maxmemory来指定其最大能使用的内存容量。例如可以通过以下配置来设置Redis最大能使用 1G 内存：maxmemory 1G
+当Redis使用的内存超过配置的 maxmemory 时，便会触发数据淘汰策略。Redis提供了多种数据淘汰的策略，如下：
+
+volatile-lru: 最近最少使用算法，从设置了过期时间的键中选择空转时间最长的键值对清除掉
+volatile-lfu: 最近最不经常使用算法，从设置了过期时间的键中选择某段时间之内使用频次最小的键值对清除掉
+volatile-ttl: 从设置了过期时间的键中选择过期时间最早的键值对清除
+volatile-random: 从设置了过期时间的键中，随机选择键进行清除
+
+allkeys-lru: 最近最少使用算法，从所有的键中选择空转时间最长的键值对清除
+allkeys-lfu: 最近最不经常使用算法，从所有的键中选择某段时间之内使用频次最少的键值对清除
+allkeys-random: 所有的键中，随机选择键进行删除
+noeviction: 不做任何的清理工作，在redis的内存超过限制之后，所有的写入操作都会返回错误；但是读操作都能正常的进行
+
+可以在启动Redis时，通过配置项maxmemory_policy来指定要使用的数据淘汰策略。例如要使用volatile-lru策略可以通过以下配置来指定：maxmemory_policy volatile-lru
+
+
+热key问题:     https://www.cnblogs.com/rjzheng/p/10874537.html
+
+
+

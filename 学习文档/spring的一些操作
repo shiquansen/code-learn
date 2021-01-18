@@ -5,3 +5,5 @@
     获取xml上下文    ap.getBean("message")
 
 3. 自定义注册Bean  实现接口  （ApplicationContextAware）
+
+    https://blog.csdn.net/u011734144/article/details/52505263

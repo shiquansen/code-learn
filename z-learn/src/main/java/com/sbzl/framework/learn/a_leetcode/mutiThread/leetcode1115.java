@@ -1,4 +1,4 @@
-package com.sbzl.framework.learn.leetcode.mutiThread;
+package com.sbzl.framework.learn.a_leetcode.mutiThread;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicBoolean;
