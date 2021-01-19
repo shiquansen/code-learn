@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @GetMapping("cache")
-    public Object getUser(){
+    public Object getCache(){
         return cacheManager.getCache("userMap");
 
     }
