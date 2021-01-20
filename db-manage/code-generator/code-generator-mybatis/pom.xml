@@ -8,10 +8,10 @@
         <version>2.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sbzl.framework</groupId>
-    <artifactId>code-generator</artifactId>
+    <groupId>com.sbzl.framework.dbmanage.codegenerator</groupId>
+    <artifactId>code-generator-mybatis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>code-generator</name>
+    <name>mybatis</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

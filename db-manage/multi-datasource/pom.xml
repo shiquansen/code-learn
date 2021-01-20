@@ -8,7 +8,7 @@
         <version>2.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sbzl.framework</groupId>
+    <groupId>com.sbzl.framework.multidatasource</groupId>
     <artifactId>multi-datasource</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>multi-datasource</name>
