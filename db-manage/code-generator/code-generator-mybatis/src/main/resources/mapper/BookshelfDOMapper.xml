@@ -13,7 +13,7 @@
     id, user_id, business_book_id, is_cancel, creat_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_bookshelf
     where id = #{id,jdbcType=BIGINT}
@@ -23,10 +23,10 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.eebbk.onlinepointread.domain.BookshelfDO">
-    insert into t_bookshelf (id, user_id, business_book_id, 
+    insert into t_bookshelf (id, user_id, business_book_id,
       is_cancel, creat_time, update_time
       )
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{businessBookId,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{businessBookId,jdbcType=BIGINT},
       #{isCancel,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>

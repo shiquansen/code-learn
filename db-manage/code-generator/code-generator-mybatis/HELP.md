@@ -24,7 +24,7 @@
                         </dependencies>
                         <configuration>
                             <!-- generator 工具配置文件的位置 -->
-                            <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                            <configurationFile>src/com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main/resources/generatorConfig.xml</configurationFile>
                             <!-- 是否覆盖 -->
                             <!-- 此处要特别注意,如果不加这个设置会导致每次运行都会在原目录再次创建-->
                             <overwrite>true</overwrite>
@@ -92,21 +92,21 @@
         
                 <!-- 生成模型的包名和位置 java实体类 -->
                 <javaModelGenerator
-                        targetPackage="com.eebbk.onlinepointread.pojo" targetProject="src/main/java">
+                        targetPackage="com.eebbk.onlinepointread.pojo" targetProject="src/com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main/java">
                     <property name="enableSubPackages" value="true" />
                     <property name="trimStrings" value="true" />
                 </javaModelGenerator>
         
                 <!-- 生成映射文件的包名和位置 -->
                 <sqlMapGenerator targetPackage="mapper"
-                                 targetProject="src/main/resources">
+                                 targetProject="src/com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main/resources">
                     <property name="enableSubPackages" value="true" />
                 </sqlMapGenerator>
         
         
                 <!-- 生成DAO的包名和位置 -->
                 <javaClientGenerator type="mapper"
-                                     targetPackage="com.eebbk.onlinepointread.dao" targetProject="src/main/java">
+                                     targetPackage="com.eebbk.onlinepointread.dao" targetProject="src/com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main/java">
                     <property name="enableSubPackages" value="true" />
                 </javaClientGenerator>
         

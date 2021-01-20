@@ -1,0 +1,11 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main/**/target/
+!**/src/test/**/target/
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

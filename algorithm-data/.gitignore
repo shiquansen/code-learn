@@ -1,7 +1,6 @@
-HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
+!**/src/com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main/**/target/
 !**/src/test/**/target/
 
 ### STS ###
@@ -18,16 +17,3 @@ target/
 *.iws
 *.iml
 *.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/

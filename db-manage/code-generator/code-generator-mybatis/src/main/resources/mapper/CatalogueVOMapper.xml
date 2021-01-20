@@ -25,12 +25,12 @@
     <result column="model_name_en" jdbcType="VARCHAR" property="modelNameEn" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, subtitle, name_en, name_zh, full_en_name, full_zn_name, content_type, content_order, 
-    inner_order, page_num, page_from, page_to, content_level, parent_id, book_id, create_time, 
+    id, subtitle, name_en, name_zh, full_en_name, full_zn_name, content_type, content_order,
+    inner_order, page_num, page_from, page_to, content_level, parent_id, book_id, create_time,
     if_father, `attribute`, catalogue_type, model_name_zh, model_name_en
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_english_catalogue
     where id = #{id,jdbcType=INTEGER}
@@ -40,20 +40,20 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
-    insert into t_english_catalogue (id, subtitle, name_en, 
-      name_zh, full_en_name, full_zn_name, 
-      content_type, content_order, inner_order, 
-      page_num, page_from, page_to, 
-      content_level, parent_id, book_id, 
-      create_time, if_father, `attribute`, 
+    insert into t_english_catalogue (id, subtitle, name_en,
+      name_zh, full_en_name, full_zn_name,
+      content_type, content_order, inner_order,
+      page_num, page_from, page_to,
+      content_level, parent_id, book_id,
+      create_time, if_father, `attribute`,
       catalogue_type, model_name_zh, model_name_en
       )
-    values (#{id,jdbcType=INTEGER}, #{subtitle,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, 
-      #{nameZh,jdbcType=VARCHAR}, #{fullEnName,jdbcType=VARCHAR}, #{fullZnName,jdbcType=VARCHAR}, 
-      #{contentType,jdbcType=VARCHAR}, #{contentOrder,jdbcType=INTEGER}, #{innerOrder,jdbcType=INTEGER}, 
-      #{pageNum,jdbcType=VARCHAR}, #{pageFrom,jdbcType=INTEGER}, #{pageTo,jdbcType=INTEGER}, 
-      #{contentLevel,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{ifFather,jdbcType=BIT}, #{attribute,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{subtitle,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR},
+      #{nameZh,jdbcType=VARCHAR}, #{fullEnName,jdbcType=VARCHAR}, #{fullZnName,jdbcType=VARCHAR},
+      #{contentType,jdbcType=VARCHAR}, #{contentOrder,jdbcType=INTEGER}, #{innerOrder,jdbcType=INTEGER},
+      #{pageNum,jdbcType=VARCHAR}, #{pageFrom,jdbcType=INTEGER}, #{pageTo,jdbcType=INTEGER},
+      #{contentLevel,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{ifFather,jdbcType=BIT}, #{attribute,jdbcType=VARCHAR},
       #{catalogueType,jdbcType=INTEGER}, #{modelNameZh,jdbcType=VARCHAR}, #{modelNameEn,jdbcType=VARCHAR}
       )
   </insert>
@@ -299,11 +299,11 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, `name`, parent_order, page_num, page_from, page_to, book_id, attribues, theme, 
+    id, `name`, parent_order, page_num, page_from, page_to, book_id, attribues, theme,
     `type`, target_id, parent_id, `level`, if_father, update_time, create_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_catalogue
     where id = #{id,jdbcType=INTEGER}
@@ -313,17 +313,17 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">
-    insert into t_catalogue (id, `name`, parent_order, 
-      page_num, page_from, page_to, 
-      book_id, attribues, theme, 
-      `type`, target_id, parent_id, 
-      `level`, if_father, update_time, 
+    insert into t_catalogue (id, `name`, parent_order,
+      page_num, page_from, page_to,
+      book_id, attribues, theme,
+      `type`, target_id, parent_id,
+      `level`, if_father, update_time,
       create_time)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentOrder,jdbcType=INTEGER}, 
-      #{pageNum,jdbcType=INTEGER}, #{pageFrom,jdbcType=INTEGER}, #{pageTo,jdbcType=INTEGER}, 
-      #{bookId,jdbcType=INTEGER}, #{attribues,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, 
-      #{type,jdbcType=INTEGER}, #{targetId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, 
-      #{level,jdbcType=INTEGER}, #{ifFather,jdbcType=BIT}, #{updateTime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentOrder,jdbcType=INTEGER},
+      #{pageNum,jdbcType=INTEGER}, #{pageFrom,jdbcType=INTEGER}, #{pageTo,jdbcType=INTEGER},
+      #{bookId,jdbcType=INTEGER}, #{attribues,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR},
+      #{type,jdbcType=INTEGER}, #{targetId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER},
+      #{level,jdbcType=INTEGER}, #{ifFather,jdbcType=BIT}, #{updateTime,jdbcType=TIMESTAMP},
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.eebbk.onlinepointread.pojo.CatalogueVO">

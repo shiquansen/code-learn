@@ -3,9 +3,9 @@
 - 线程原子操作
       ```
         read
-        负责从主存储器（main memory）拷贝到工作存储器（working memory）
+        负责从主存储器（com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main memory）拷贝到工作存储器（working memory）
         write
-        与上述相反，负责从工作存储器（working memory）拷贝到主存储器（main memory）
+        与上述相反，负责从工作存储器（working memory）拷贝到主存储器（com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main memory）
         use
         表示线程引用工作存储器（working memory）的值
         assign
@@ -19,7 +19,7 @@
     ```
       线程欲进入synchronized时，会执行以下两类操作：
       
-      强制写入主存储器（main memory）
+      强制写入主存储器（com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main memory）
       当线程欲进入synchronized时，如果该线程的工作存储器（working memory）上有未映像到主存储器的拷贝，则这些内容会强制写入主存储器（store->write），则这些计算结果就会对其它线程可见（visible）。
       
       工作存储器（working memory）的释放
@@ -28,7 +28,7 @@
       4.2 线程欲退出synchronized
       线程欲退出synchronized时，会执行以下操作：
       
-      强制写入主存储器（main memory）
+      强制写入主存储器（com.sbzl.dbmanage.codegenerator.codegeneratormybatisplus.CodeGeneratorMybatisplusApplication.main memory）
       当线程欲退出synchronized时，如果该线程的工作存储器（working memory）上有未映像到主存储器的拷贝，则这些内容会强制写入主存储器（store->write），则这些计算结果就会对其它线程可见（visible）。
     
       注意： 线程欲退出synchronized时，不会执行工作存储器（working memory）的释放 操作。
