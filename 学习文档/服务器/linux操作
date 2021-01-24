@@ -1,0 +1,90 @@
+1. 安装JDK
+    yum install java
+2. MYSQL安装
+    1. 下载并安装MySQL官方的 Yum
+        wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+    2. 下载mysql
+        yum -y install mysql57-community-release-el7-10.noarch.rpm
+    3. 安装mysql
+        yum -y install mysql-community-server
+    4. 启动mysql
+        systemctl start mysqld.service
+    5. 获取临时密码
+        grep "password" /var/log/mysqld.log
+    6. 修改MYSQL密码
+        mysql -uroot -p
+        ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+            problem： ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+            解决: 先改好qwer.1234.S
+            SHOW VARIABLES LIKE 'validate_password%'; //查看密码策略
+            set global validate_password_policy=LOW;    //修改策略
+            set global validate_password_length=6;
+            SHOW VARIABLES LIKE 'validate_password%'; //查看密码策略
+            ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+
+    7. 允许远程连接
+        GRANT ALL PRIVILEGES ON *.* TO  'root'@'%'  IDENTIFIED BY 'root' WITH GRANT OPTION;
+    8. 授权其他用户(可选)
+        CREATE USER 'username'@'host' IDENTIFIED BY 'password';
+        GRANT ALL PRIVILEGES ON *.* TO 'username'@'%'  WITH GRANT OPTION;
+    9. 刷新权限
+        FLUSH PRIVILEGES;
+    10. 删除无用安装包
+        yum -y remove mysql57-community-release-el7-10.noarch
+    11. 防火墙打开3306端口
+        firewall-cmd --zone=public --add-port=3306/tcp --permanent
+    12. 重启防火墙
+        firewall-cmd --reload
+3. nginx安装
+    1. 配置支持包
+        nginx程序源代码：nginx-1.11.3.tar.gz
+        信息输出：echo-nginx-module-0.59.tar.gz
+        缓存清除：ngx_cache_purge-2.3.tar.gz
+        负载均衡：nginx_upstream-fair-a18b409.tar.gz
+    2. 定义nginx编译输出目录
+        mkdir -p /usr/local/nginx/{logs,conf,fastcgi_temp,sbin,client_body_temp,proxy_temp,uwsgi_temp,scgi_temp}
+    3. 将开发包上传到linux服务器之中, 将开发包解压到"/usr/local/src"目录中
+        tar xzvf nginx-1.11.3.tar.gz -C /usr/local/src/
+        tar xzvf nginx-upstream-fair-a18b409.tar.gz -C /usr/local/src/
+        tar xzvf echo-nginx-module-0.59.tar.gz -C /usr/local/src/
+        tar xzvf ngx_cache_purge-2.3.tar.gz -C /usr/local/src/
+    4. nginx编译完成之后，会默认保存在源代码的目录之中，这样的操作不方便进行管理，所以可以单独建立一个新的文件目录，保存所有nginx的所有相关配置，目录名称/usr/local/nginx
+        mkdir -p /usr/local/nginx/{logs,conf,fastcgi_temp,sbin,client_body_temp,proxy_temp,uwsgi_temp,scgi_temp}
+    5. 进入nginx源代码目录：
+        cd /usr/local/src/nginx-1.11.3
+    6. 执行如下命令完成编译操作
+        UBUNTU
+            sudo apt-get install openssl
+            sudo apt-get install libssl-dev
+        CENTOS
+            yum install -y gcc pcre pcre-devel openssl openssl-devel gd gd-devel
+    7. 编译Nginx源代码
+         ./configure --prefix=/usr/local/nginx/--with-http_ssl_module\
+         --sbin-path=/usr/local/nginx/sbin/\
+         --with-http_ssl_module\
+         --conf-path=/usr/local/nginx/conf/nginx.conf\
+         --pid-path=/usr/local/nginx/logs/nginx.pid\
+         --error-log-path=/usr/local/nginx/logs/error.log\
+         --http-log-path=/usr/local/nginx/logs/access.log\
+         --http-fastcgi-temp-path=/usr/local/nginx/fastcgi_temp\
+         --http-client-body-temp-path=/usr/local/nginx/client_body_temp\
+         --http-proxy-temp-path=/usr/local/nginx/proxy_temp\
+         --http-uwsgi-temp-path=/usr/local/nginx/uwsgi_temp\
+         --http-scgi-temp-path=/usr/local/nginx/scgi_temp\
+         --add-module=/usr/local/src/echo-nginx-module-0.59\
+         --add-module=/usr/local/src/gnosek-nginx-upstream-fair-a18b409\
+         --add-module=/usr/local/src/ngx_cache_purge-2.3
+    8. 安装Nginx
+        make && make install
+    9. 启动Nginx(直接启动)
+        /usr/local/nginx/sbin/nginx
+    10. 查看是否启动成功
+        ps -ef | grep nginx     (查看进程)
+        netstat -nptl           (查看端口)
+    11. 使用指定配置文件启动Nginx
+        /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+    12. 设置防火墙放行端口
+        firewall-cmd --zone=public --add-port=80/tcp --permanent
+        firewall-cmd --reload
+    13. 配置软连接，可以不用在路径直接启动nginx
+        sudo ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
