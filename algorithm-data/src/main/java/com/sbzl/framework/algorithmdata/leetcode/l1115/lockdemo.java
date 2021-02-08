@@ -1,55 +1,67 @@
 package com.sbzl.framework.algorithmdata.leetcode.l1115;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 交替打印FooBar
- *
- * countDownLatch 等同步器要在内部使用
+ * 没有办法解决
+ * lock的话怎么在一条线程去控制另一条线程的执行 ？？？？？
  */
-public class CountdownlatchDemo {
+public class lockdemo {
 
     public static void main(String[] args) throws InterruptedException {
-        CountdownlatchDemo leet = new CountdownlatchDemo();
+        lockdemo leet = new lockdemo();
         for(int i =0; i < 5; i++){
             leet.runPrint();
         }
     }
 
-//    Semaphore fooSemaphore = new Semaphore(1);
-//    Semaphore barSemaphore = new Semaphore(1);
-//    CountDownLatch fooCountDownLatch = new CountDownLatch(1);
 
+
+    Lock lock = new ReentrantLock(true);
+    volatile boolean permitFoo = true;
 
     private static final ExecutorService executorService = Executors.newCachedThreadPool();
-    public CountdownlatchDemo() {
-    }
 
     public void runPrint() throws InterruptedException {
-        CountDownLatch barCountDownLatch = new CountDownLatch(1);
-        CountDownLatch fooCountDownLatch = new CountDownLatch(1);
-        bar(() -> {
-            try {
-                barCountDownLatch.await();
-                System.out.println(" bar");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
 
-        });
         foo(() -> {
             try {
-                fooCountDownLatch.await();
+                lock.lock();
+                if(permitFoo){
+                    System.out.print("foo");
+                    permitFoo = false;
+                }
             } catch (Exception e) {
                 e.printStackTrace();
+            }finally {
+                lock.unlock();
             }
-            System.out.print("foo");
-            barCountDownLatch.countDown();
+
+        });
+
+        bar(() -> {
+            try {
+                lock.lock();
+                if(!permitFoo){
+                    System.out.println(" bar");
+                    permitFoo = true;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }finally {
+                lock.unlock();
+            }
         });
 
 
-        fooCountDownLatch.countDown();
-        Thread.sleep(10);
+
+
+        Thread.sleep(1);
+
+
     }
 
 
@@ -66,6 +78,4 @@ public class CountdownlatchDemo {
             executorService.execute(printBar);
         } catch(Exception ignored) {}
     }
-
-
 }

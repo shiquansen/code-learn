@@ -1,4 +1,4 @@
-package com.sbzl.framework.juc.business;
+package com.sbzl.framework.juc.business.qianghongbao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +61,6 @@ class CatchLuckMoney implements Runnable {
         System.out.println("end>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+Thread.currentThread().getName());
     }
 }
-
 class LuckyMoney {
 
     public LuckyMoney(String name, Integer money) {
