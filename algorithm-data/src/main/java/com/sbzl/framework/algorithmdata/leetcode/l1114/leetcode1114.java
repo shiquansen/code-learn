@@ -1,4 +1,4 @@
-package com.sbzl.framework.algorithmdata.leetcode;
+package com.sbzl.framework.algorithmdata.leetcode.l1114;
 import java.util.concurrent.CountDownLatch;
 
 
@@ -20,12 +20,12 @@ public class leetcode1114 {
 
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 5; i++) {
             test();
         }
     }
 
-    public static void test() throws InterruptedException {
+    public static synchronized void test() throws InterruptedException {
         CountDownLatch firstLatch = new CountDownLatch(1);
         CountDownLatch secondLatch = new CountDownLatch(1);
         CountDownLatch thirdLatch = new CountDownLatch(1);
@@ -37,6 +37,14 @@ public class leetcode1114 {
 //        new Thread(secondPrint).start();
 //        new Thread(thirdPrint).start();
 
+        new Thread(() -> {
+            try {
+                secondLatch.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("second");
+            thirdLatch.countDown();}).start();
 
         new Thread(() -> {
             try {
@@ -55,21 +63,10 @@ public class leetcode1114 {
             }
             System.out.println("third");}).start();
 
-        new Thread(() -> {
-            try {
-                secondLatch.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("second");
-            thirdLatch.countDown();}).start();
-
-
-
         firstLatch.countDown();
 
         System.out.println("================= finish ==================");
-//
+
         Thread.sleep(1000);
 
     }
