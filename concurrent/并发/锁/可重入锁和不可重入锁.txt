@@ -1,0 +1,30 @@
+https://blog.csdn.net/u010275850/article/details/100110450
+
+可递归锁也可称为可重入锁(reentrant mutex)，
+非递归锁又叫不可重入锁(non-reentrant mutex)。
+递归锁具有线程排他性
+二者唯一的区别是，同一个线程可以多次获取同一个递归锁，不会产生死锁。而如果一个线程多次获取同一个非递归锁，则会产生死锁。
+
+死锁情况1:
+    void foo()
+    {
+    	mutex.lock();
+    	// do something
+    	mutex.unlock();
+    }
+
+    void bar()
+    {
+    	mutex.lock();
+    	// do something
+    	foo();
+    	mutex.unlock();
+    }
+    == mutex是一个不可重入锁，bar调用foo会导致bar拿不到锁
+
+死锁情况2：
+    Thread A              Thread B
+    _mu.lock()            _mu2.lock()
+    //死锁             //死锁
+    _mu2.lock()           _mu.lock()
+

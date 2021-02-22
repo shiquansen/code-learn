@@ -1,4 +1,4 @@
-package com.sbzl.framework.juc.demo.lock;
+package com.sbzl.framework.juc.lock.diyaqs;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
