@@ -1,0 +1,20 @@
+先从基础的 https://segmentfault.com/blog/ressmix_multithread?page=3  的  1-13过一遍
+lock独享锁 (ReentrantLock, ReentrantReadWriteLock)
+lockSupport
+AbstractQueuedSynchronizer
+condition
+AQS的共享锁以及读写锁
+
+Atomic
+
+sync
+(CountDownLatch, CyclicBarrier, Semaphore)
+
+collection
+(ConcurrentHashMap, CopyOnWriteArrayList, CopyOnWriteArraySet, LinkedBlockingQueue, DelayQueue
+ArrayBlockingQueue
+ConcurrentLinkedQueue, ConcurrentLinkedDeque
+ConcurrentSkipListMap, ConcurrentSkipListSet)
+
+executors
+(ThreadPoolExecutor, ScheduledExecutorService, FutureTask, Fork/Join)
