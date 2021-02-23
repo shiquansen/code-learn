@@ -1,0 +1,5 @@
+FieldUpdater    所谓AtomicXXXFieldUpdater，就是可以以一种线程安全的方式操作非线程安全对象的某些字段。
+AtomicArray     JDK提供了三种类型的原子数组：AtomicIntegerArray、AtomicLongArray、AtomicReferenceArray。
+
+JDK1.8时，java.util.concurrent.atomic包中提供了一个新的原子类：LongAdder。
+根据Oracle官方文档的介绍，LongAdder在高并发的场景下会比它的前辈————AtomicLong 具有更好的性能，代价是消耗更多的内存空间

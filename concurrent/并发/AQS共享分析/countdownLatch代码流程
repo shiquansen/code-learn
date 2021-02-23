@@ -1,0 +1,30 @@
+    await -> acquireSharedInterruptibly  -> tryAcquireShared    ->  (getState() == 0) ? 1 : -1
+    state表示countdownlatch的初始值，也就是不为0时返回才会往下执行
+    doAcquireSharedInterruptibly(arg)   ->  类似于reentrantlock    将节点加到队列，修改前驱状态值
+
+
+    countdown   ->  releaseShared   ->  tryReleaseShared(1) ->  for (;;) {
+                                                                                int c = getState();
+                                                                                if (c == 0)
+                                                                                    return false;
+                                                                                int nextc = c-1;
+                                                                                if (compareAndSetState(c, nextc))
+                                                                                    return nextc == 0;
+                                                                            }
+    next = nextc,如果为0，返回true。 执行    doReleaseShared    ->     Node h = head;
+                                                                    if (h != null && h != tail) {
+                                                                        int ws = h.waitStatus;
+                                                                        if (ws == Node.SIGNAL) {
+                                                                            if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0))
+                                                                                continue;            // loop to recheck cases   cas成功后唤醒后继节点
+                                                                            unparkSuccessor(h);
+                                                                        }
+                                                                        else if (ws == 0 &&
+                                                                                 !compareAndSetWaitStatus(h, 0, Node.PROPAGATE))
+                                                                            continue;                // loop on failed CAS
+                                                                    }
+                                                                    if (h == head)                   // loop if head changed
+                                                                        break;
+
+AQS的共享功能，通过钩子方法tryAcquireShared暴露，与独占功能最主要的区别就是：
+共享功能的结点，一旦被唤醒，会向队列后部传播（Propagate）状态，以实现共享结点的连续唤醒。这也是共享的含义，当锁被释放时，所有持有该锁的共享线程都会被唤醒，并从等待队列移除。

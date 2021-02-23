@@ -14,7 +14,7 @@ public class CyclicBarrierDemo {
             }
         });
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < 4 * N; i++) {
             Thread t = new Thread(new PrepareWork(cb), "运动员[" + i + "]");
             t.start();
         }

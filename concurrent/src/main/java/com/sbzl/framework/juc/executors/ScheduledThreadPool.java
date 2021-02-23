@@ -2,12 +2,18 @@ package com.sbzl.framework.juc.executors;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
+/**
+ * 定时器
+ * cron 表达式 https://www.cnblogs.com/dubhlinn/p/10740838.html
+ */
 public class ScheduledThreadPool {
 
     private static final Integer threadSize = 10;
 
-    private static final ExecutorService executor = Executors.newScheduledThreadPool(threadSize);
+    private static final ScheduledExecutorService scheduled = Executors.newScheduledThreadPool(threadSize);
 
     /**
      *
@@ -29,4 +35,20 @@ public class ScheduledThreadPool {
      *
      *
      */
+    public static void main(String[] args) {
+
+        scheduled.schedule(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("hello====world");
+            }
+        },  3, TimeUnit.SECONDS);
+
+        scheduled.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("hello====world");
+            }
+        },  5, 3,TimeUnit.SECONDS);
+    }
 }

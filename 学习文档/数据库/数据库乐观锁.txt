@@ -1,0 +1,14 @@
+1.数据库表设计
+ task
+有三个字段，分别是id,value、version
+2.实现
+1）先读task表的数据（实际上这个表只有一条记录），得到version的值为versionValue
+2)每次更新task表中的value字段时，为了防止发生冲突，需要这样操作
+  update task set value = newValue,version =  versionValue + 1   where version = versionValue;
+  只有这条语句执行了，才表明本次更新value字段的值成功
+
+如假设有两个节点A和B都要更新task表中的value字段值，差不多在同一时刻，A节点和B节点从task表中读到的version值为2，
+那么A节点和B节点在更新value字段值的时候，都操作 update task set value = newValue,version =  3   where version = 2;
+实际上只有1个节点执行该SQL语句成功，假设A节点执行成功，那么此时task表的version字段的值是3，
+B节点再操作update task set value = newValue,version =  3   where version = 2;这条SQL语句是不执行的，
+这样就保证了更新task表时不发生冲突
