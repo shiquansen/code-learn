@@ -1,3 +1,4 @@
-#### 博客系统
-- https://www.oschina.net/p/jcalablog
-- https://github.com/aquanlerou/WeHalo
+#### 学习路线规划
+- redis 
+- JUC
+- rabbitMQ
