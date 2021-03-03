@@ -1,0 +1,20 @@
+Elasticsearch有四类API：
+　　　　第一：检查集群，节点，索引等健康与否，以及获取其相应状态；
+　　　　第二：管理集群，节点，索引及元数据；
+　　　　第三：执行CRUD（增删查改）操作；
+　　　　第四：执行高级操作，例如：paging，filtering等
+　　ES访问接口：9200/TCP，它是HTTP请求，我们可以通过curl命令访问，格式为：“curl -x<VERB> ‘<PROTOCOL>://HOST:PORT/<PATH>?<QUERY_STRING> -d '<BODY>' ”
+　　　　VERB　　　　　　　　：GET,PUT,DELETE等；
+　　　　PROTOCOL　　　　　：http,https
+　　　　QUERY_STRING　　   ：查询参数，例如?pretty表示用易读的JSON格式输出。
+　　　　BODY　　　　　　　　：请求的主题
+    案例展示:
+        查看ES集群的工作状态：
+            curl -X GET 'http://node101.yinzhengjie.org.cn:9200/_cat'            　　　　#查看ES可以查看的方法
+            curl -X GET 'http://node101.yinzhengjie.org.cn:9200/_cat/nodes'        　　 #查看各个node节点信息，不显示头部信息
+            curl -X GET 'http://node101.yinzhengjie.org.cn:9200/_cat/nodes?v'    　　　　#查看各个node节点信息，显示头部信息
+            curl -X GET 'http://node101.yinzhengjie.org.cn:9200/_cat/master?v'    　　　　#显示主节点信息，显示头部信息
+            curl -X GET 'http://node101.yinzhengjie.org.cn:9200/_cat/health?v'    　　　　#查看集群的节点状态
+
+
+http://www.javaboy.org/2020/1105/elastic_search_guide.html

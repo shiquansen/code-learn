@@ -1,0 +1,4 @@
+问题: JAVA_HOME 在env里面修改
+
+待做：       中文分词器   analysis-IK安装
+            kibana 安装

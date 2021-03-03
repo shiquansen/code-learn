@@ -8,7 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>web-socket</module>
     </modules>
 
     <name>sbzl</name>

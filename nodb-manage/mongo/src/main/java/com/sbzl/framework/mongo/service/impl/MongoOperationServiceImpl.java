@@ -62,8 +62,8 @@ public class MongoOperationServiceImpl implements MongoOperationService {
     @Override
     public void delete(Integer id) {
         School byId = mongoTemplate.findById(id,School.class);
+        assert byId != null;
         mongoTemplate.remove(byId);
     }
-
 
 }
