@@ -1,0 +1,111 @@
+# ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+# Before you set out to tweak and tune the configuration, make sure you
+# understand what are you trying to accomplish and the consequences.
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please consult the documentation for further information on configuration options:
+# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#配置集群名称，默认elasticsearch
+cluster.name: "array-es-cluster"
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#配置节点名称
+node.name: "master"
+#
+# Add custom attributes to the node:
+#每个节点都可以定义一些与之关联的通用属性，用于后期集群进行碎片分配时的过滤
+#node.attr.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#分配给当前节点的索引数据所在的位置
+path.data: /data/apps/elasticsearch-7.9.0/data
+#
+# Path to log files:
+#日志文件所在位置
+path.logs: /data/apps/elasticsearch-7.9.0/logs
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+## 锁住内存，不被使用到交换分区去
+#bootstrap.memory_lock: true
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+network.host: "10.241.42.41"
+#
+# Set a custom port for HTTP:
+#
+http.port: 9200
+#
+# For more information, consult the network module documentation.
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when this node is started:
+# The default list of hosts is ["127.0.0.1", "[::1]"]
+#
+#Elasticsearch7新增参数，写入候选主节点的设备地址，来开启服务时就可以被选为主节点
+discovery.seed_hosts: ["10.241.42.41:9300", "10.241.42.165:9300"]
+#
+# Bootstrap the cluster using an initial set of master-eligible nodes:
+#Elasticsearch7新增参数，写入候选主节点的设备地址，来开启服务时就可以被选为主节点
+cluster.initial_master_nodes: ["master"]
+
+# 主节点相关配置
+node.master: true
+node.data: false
+node.ingest: false
+node.ml: false
+cluster.remote.connect: false
+
+# 跨域
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+# x-head 访问配置
+http.cors.allow-headers: Authorization,X-Requested-With,Content-Length,Content-Type
+
+#security安全认证,开启xpack认证机制
+#xpack.security.enabled: true
+#xpack.security.transport.ssl.enabled: true
+
+# 配置ssl和CA证书配置
+#xpack.ssl.key: elasticsearch/elasticsearch.key
+#xpack.ssl.certificate: elasticsearch/elasticsearch.crt
+#xpack.ssl.certificate_authorities: ca/ca.crt
+
+# For more information, consult the discovery and cluster formation module documentation.
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# Block initial recovery after a full cluster restart until N nodes are started:
+#允许在N个节点启动后恢复过程
+gateway.recover_after_nodes: 2
+#
+# For more information, consult the gateway module documentation.
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Require explicit names when deleting indices:
+#设置是否可以通过正则或者_all删除或者关闭索引，默认false 允许 可设置true不允许
+#action.destructive_requires_name: true
